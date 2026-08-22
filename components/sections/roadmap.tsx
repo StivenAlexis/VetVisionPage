@@ -17,7 +17,7 @@ export function Roadmap({ dict }: { dict: Dictionary }) {
             variant="scale-x"
             delay={150}
             aria-hidden="true"
-            className="absolute top-[9px] right-0 left-0 hidden h-px bg-border lg:block"
+            className="absolute top-[4.5px] right-0 left-0 hidden h-px bg-border lg:block"
           />
           {t.phases.map((phase, i) => (
             <Reveal key={phase.phase} as="li" delay={200 + i * 120} className="relative">
