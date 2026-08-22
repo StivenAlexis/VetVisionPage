@@ -3,20 +3,22 @@
 import { useState } from "react";
 import { ZoomIn, ZoomOut } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ChestXraySvg } from "@/components/chest-xray-svg";
+import { ChestXrayArt } from "@/components/chest-xray-svg";
+import { XrayOverlayArt } from "@/components/xray-overlay";
+import type { Dictionary } from "@/lib/i18n";
 
-const THORAX_ORIGIN = "51% 50%";
+const THORAX_ORIGIN = "44% 55%";
 
 export function XrayMockup({
   caption,
-  vhsLabel,
   zoomInLabel,
   zoomOutLabel,
+  xray,
 }: {
   caption: string;
-  vhsLabel: string;
   zoomInLabel: string;
   zoomOutLabel: string;
+  xray: Dictionary["howItWorks"]["interactiveXray"];
 }) {
   const [zoomed, setZoomed] = useState(false);
 
@@ -35,23 +37,29 @@ export function XrayMockup({
         className="group block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring aria-pressed:cursor-zoom-out"
       >
         <div className="overflow-hidden" role="img" aria-label={caption}>
-          <ChestXraySvg
-            annotated
+          <svg
+            viewBox="0 0 880 500"
             className="h-auto w-full transition-transform duration-700 ease-out"
             style={{
-              transform: zoomed ? "scale(2.3)" : "scale(1)",
+              transform: zoomed ? "scale(2.1)" : "scale(1)",
               transformOrigin: THORAX_ORIGIN,
             }}
-          />
+          >
+            <ChestXrayArt />
+            <XrayOverlayArt
+              cardiacLabel={xray.onImageLabels.cardiac}
+              tracheaLabel={xray.onImageLabels.trachea}
+            />
+          </svg>
         </div>
       </button>
 
-      <div className="pointer-events-none absolute left-3 top-3 rounded border border-primary/30 bg-background/80 px-2 py-1 text-mono-nums text-[10px] text-primary backdrop-blur">
-        {vhsLabel} 10.8
+      <div className="pointer-events-none absolute bottom-14 left-3 rounded border border-primary/30 bg-background/80 px-2 py-1 text-mono-nums text-[10px] text-primary backdrop-blur">
+        {xray.vhsBadgeValue}
       </div>
       <div className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded border border-border bg-background/80 px-2 py-1 text-mono-nums text-[10px] text-muted-foreground backdrop-blur">
         <span className="size-1.5 animate-pulse rounded-full bg-clinical" />
-        AI · 1.4s
+        {xray.aiBadge}
       </div>
 
       <div

@@ -33,7 +33,6 @@ export type Dictionary = {
     stats: Stat[];
     visualCaption: string;
     visualDisclaimer: string;
-    vhsLabel: string;
     zoomInLabel: string;
     zoomOutLabel: string;
   };
@@ -47,7 +46,20 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     subtitle: string;
-    beforeAfter: { rawLabel: string; analyzedLabel: string };
+    interactiveXray: {
+      rawCaption: string;
+      analyzedCaption: string;
+      instruction: string;
+      aiBadge: string;
+      vhsBadgeValue: string;
+      vhsBadgeRef: string;
+      onImageLabels: { cardiac: string; trachea: string };
+      findings: {
+        box: { pill: string; detail: string };
+        vhs: { pill: string; detail: string };
+        traq: { pill: string; detail: string };
+      };
+    };
     steps: { title: string; description: string }[];
     reportExample: {
       eyebrow: string;

@@ -72,9 +72,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
           <div>
             <XrayMockup
               caption={t.visualCaption}
-              vhsLabel={t.vhsLabel}
               zoomInLabel={t.zoomInLabel}
               zoomOutLabel={t.zoomOutLabel}
+              xray={dict.howItWorks.interactiveXray}
             />
             <p className="mt-3 text-center text-xs text-muted-foreground/70">
               {t.visualDisclaimer}

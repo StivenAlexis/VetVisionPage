@@ -25,7 +25,14 @@ Abrí [http://localhost:3000](http://localhost:3000) — redirige a `/es` (idiom
 - **Datos entre corchetes** (`[COMPLETAR: ...]`): nombres del equipo fundador, email de contacto, email de inversores, link de Calendly. Buscar `COMPLETAR` / `TO FILL IN` en `lib/i18n/dictionaries/` para encontrarlos todos.
 - **Formulario de beta**: el submit está mockeado (`console.log` + confirmación inline en `components/sections/final-cta.tsx`). Conectar a un endpoint real (Formspree, Resend, etc.) antes del lanzamiento.
 - **Componentes de 21st.dev**: el MCP de 21st.dev se agregó a la config del proyecto pero no llegó a estar disponible en esta sesión (los MCP agregados a mitad de sesión requieren reiniciar Claude Code para cargar sus herramientas). Los componentes de esta v1 están hechos a mano sobre shadcn/ui siguiendo sus mismas convenciones — después de reiniciar la sesión se puede usar 21st.dev para buscar/adaptar variantes alternativas.
-- **Dominio propio en Vercel**: el proyecto ya es deployable sin fricción (`npm run build` corre limpio). Al conectar el dominio en Vercel, actualizar `metadataBase` en `app/[lang]/layout.tsx` (hoy apunta a `https://vetvision.ai` como placeholder).
+## Deploy (Vercel + dominio propio)
+
+El proyecto es deployable sin fricción (`npm run build` corre limpio, `metadataBase` ya apunta a `https://vetvision.com.ar`).
+
+1. En [vercel.com](https://vercel.com), **Add New → Project** e importá el repo `StivenAlexis/VetVisionPage` desde GitHub. Vercel detecta Next.js automáticamente — no hace falta tocar ningún setting de build.
+2. Una vez deployado, andá a **Project → Settings → Domains** y agregá `vetvision.com.ar` (y opcionalmente `www.vetvision.com.ar`).
+3. Vercel te va a mostrar los records DNS exactos a cargar en el proveedor donde está registrado el dominio (típicamente un record `A` apuntando a `76.76.21.21` para el dominio raíz, y un `CNAME` a `cname.vercel-dns.com` para `www`) — se propagan en minutos a horas.
+4. Cada `git push` a `main` dispara un nuevo deploy automático.
 
 ## Disclaimer
 

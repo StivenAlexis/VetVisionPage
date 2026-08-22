@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Anthropic reference material and agent config — not app source
+AGENTS.md
+CLAUDE.md
+/Anthropic

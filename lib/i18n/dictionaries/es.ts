@@ -30,7 +30,6 @@ export const es: Dictionary = {
     ],
     visualCaption: "Radiografía torácica lateral de un canino, con overlay de detección de IA",
     visualDisclaimer: "Imagen ilustrativa — se reemplaza por una radiografía real del producto",
-    vhsLabel: "VHS",
     zoomInLabel: "Click para ampliar el tórax",
     zoomOutLabel: "Click para alejar",
   },
@@ -67,9 +66,34 @@ export const es: Dictionary = {
     title: "De la radiografía al informe, en cuatro pasos",
     subtitle:
       "VetVision AI se apoya en transfer learning sobre arquitecturas ResNet-50 y DenseNet-121, entrenadas y validadas sobre casos reales.",
-    beforeAfter: {
-      rawLabel: "Placa cruda",
-      analyzedLabel: "Análisis VetVision AI",
+    interactiveXray: {
+      rawCaption: "Placa cruda · ingreso",
+      analyzedCaption: "Análisis VetVision AI · < 2 s",
+      instruction: "Pasá el cursor sobre la placa analizada o sobre un hallazgo para ver el detalle clínico.",
+      aiBadge: "IA · 1.4 s",
+      vhsBadgeValue: "VHS 11.9",
+      vhsBadgeRef: "ref. ≤ 10.7",
+      onImageLabels: {
+        cardiac: "SILUETA CARDÍACA · 0.97",
+        trachea: "TRÁQUEA ↑",
+      },
+      findings: {
+        box: {
+          pill: "Silueta cardíaca · 0.97",
+          detail:
+            "Silueta cardíaca detectada (confianza 0.97): contacto esternal aumentado y borde caudal redondeado. La región se delimita y pasa al módulo VHS.",
+        },
+        vhs: {
+          pill: "VHS 11.9 · cardiomegalia",
+          detail:
+            "Índice VHS: eje largo L (base-ápice) + eje corto S (perpendicular en el punto más ancho), transpuestos sobre la columna desde T4 → VHS 11.9 · ref. ≤ 10.7 — compatible con cardiomegalia.",
+        },
+        traq: {
+          pill: "Tráquea elevada",
+          detail:
+            "Tráquea desplazada dorsalmente: menor ángulo con la columna vertebral, signo secundario de agrandamiento cardíaco.",
+        },
+      },
     },
     steps: [
       {
@@ -99,7 +123,7 @@ export const es: Dictionary = {
       patientLabel: "Paciente",
       patientPlaceholder: "Firulais · Canino",
       findings: [
-        { label: "Cardiomegalia", value: "VHS 10.8", flagged: true },
+        { label: "Cardiomegalia", value: "VHS 11.9", flagged: true },
         { label: "Patrón alveolar", value: "No detectado", flagged: false },
         { label: "Efusión pleural", value: "No detectado", flagged: false },
         { label: "Neumotórax", value: "No detectado", flagged: false },

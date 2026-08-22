@@ -14,10 +14,7 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
         <div className="mt-10">
-          <BeforeAfter
-            rawLabel={t.beforeAfter.rawLabel}
-            analyzedLabel={t.beforeAfter.analyzedLabel}
-          />
+          <BeforeAfter t={t.interactiveXray} />
         </div>
 
         <ol id="como-funciona" className="mt-14 grid scroll-mt-24 gap-8 sm:grid-cols-2 lg:grid-cols-4">

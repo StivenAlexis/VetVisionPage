@@ -30,7 +30,7 @@ export async function generateMetadata({
   const dict = getDictionary(lang);
 
   return {
-    metadataBase: new URL("https://vetvision.ai"),
+    metadataBase: new URL("https://vetvision.com.ar"),
     title: {
       default: dict.meta.title,
       template: `%s · VetVision AI`,

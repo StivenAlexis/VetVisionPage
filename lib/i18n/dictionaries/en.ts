@@ -30,7 +30,6 @@ export const en: Dictionary = {
     ],
     visualCaption: "Lateral chest X-ray of a dog, with AI detection overlay",
     visualDisclaimer: "Illustrative image — to be replaced with a real product X-ray",
-    vhsLabel: "VHS",
     zoomInLabel: "Click to zoom into the thorax",
     zoomOutLabel: "Click to zoom out",
   },
@@ -67,9 +66,34 @@ export const en: Dictionary = {
     title: "From X-ray to report, in four steps",
     subtitle:
       "VetVision AI runs on transfer learning over ResNet-50 and DenseNet-121 architectures, trained and validated on real cases.",
-    beforeAfter: {
-      rawLabel: "Raw scan",
-      analyzedLabel: "VetVision AI analysis",
+    interactiveXray: {
+      rawCaption: "Raw scan · intake",
+      analyzedCaption: "VetVision AI analysis · < 2 s",
+      instruction: "Hover over the analyzed scan or a finding to see the clinical detail.",
+      aiBadge: "AI · 1.4 s",
+      vhsBadgeValue: "VHS 11.9",
+      vhsBadgeRef: "ref. ≤ 10.7",
+      onImageLabels: {
+        cardiac: "CARDIAC SILHOUETTE · 0.97",
+        trachea: "TRACHEA ↑",
+      },
+      findings: {
+        box: {
+          pill: "Cardiac silhouette · 0.97",
+          detail:
+            "Cardiac silhouette detected (confidence 0.97): increased sternal contact and a rounded caudal border. The region is outlined and passed to the VHS module.",
+        },
+        vhs: {
+          pill: "VHS 11.9 · cardiomegaly",
+          detail:
+            "VHS index: long axis L (base-to-apex) + short axis S (perpendicular at the widest point), transposed onto the spine from T4 → VHS 11.9 · ref. ≤ 10.7 — consistent with cardiomegaly.",
+        },
+        traq: {
+          pill: "Elevated trachea",
+          detail:
+            "Trachea displaced dorsally: reduced angle with the vertebral column, a secondary sign of cardiac enlargement.",
+        },
+      },
     },
     steps: [
       {
@@ -99,7 +123,7 @@ export const en: Dictionary = {
       patientLabel: "Patient",
       patientPlaceholder: "Rex · Canine",
       findings: [
-        { label: "Cardiomegaly", value: "VHS 10.8", flagged: true },
+        { label: "Cardiomegaly", value: "VHS 11.9", flagged: true },
         { label: "Alveolar pattern", value: "Not detected", flagged: false },
         { label: "Pleural effusion", value: "Not detected", flagged: false },
         { label: "Pneumothorax", value: "Not detected", flagged: false },
