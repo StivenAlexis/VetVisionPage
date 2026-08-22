@@ -163,6 +163,19 @@
   .animate-scan {
     animation: scan 4.5s ease-in-out infinite;
   }
+
+  .animate-grid-drift {
+    animation: grid-drift 50s linear infinite;
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 160px 160px;
+  }
 }
 
 @keyframes scan {

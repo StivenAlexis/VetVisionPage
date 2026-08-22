@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import type { Dictionary } from "@/lib/i18n";
 
 export function Roadmap({ dict }: { dict: Dictionary }) {
@@ -11,12 +12,15 @@ export function Roadmap({ dict }: { dict: Dictionary }) {
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
         <ol className="relative mt-14 grid gap-8 lg:grid-cols-4 lg:gap-6">
-          <div
+          <Reveal
+            as="div"
+            variant="scale-x"
+            delay={150}
             aria-hidden="true"
             className="absolute top-[9px] right-0 left-0 hidden h-px bg-border lg:block"
           />
-          {t.phases.map((phase) => (
-            <li key={phase.phase} className="relative">
+          {t.phases.map((phase, i) => (
+            <Reveal key={phase.phase} as="li" delay={200 + i * 120} className="relative">
               <span
                 aria-hidden="true"
                 className="relative z-10 block size-[9px] rounded-full bg-primary ring-4 ring-background"
@@ -41,7 +45,7 @@ export function Roadmap({ dict }: { dict: Dictionary }) {
                   </li>
                 ))}
               </ul>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </Container>

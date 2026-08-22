@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Reveal } from "@/components/reveal";
 import type { Dictionary } from "@/lib/i18n";
 
 export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
@@ -31,10 +32,12 @@ export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} align="center" />
 
         <Tabs defaultValue="clinics" className="mx-auto mt-12 max-w-2xl">
-          <TabsList className="mx-auto">
-            <TabsTrigger value="clinics">{t.tabClinics}</TabsTrigger>
-            <TabsTrigger value="investors">{t.tabInvestors}</TabsTrigger>
-          </TabsList>
+          <Reveal delay={100} className="flex justify-center">
+            <TabsList>
+              <TabsTrigger value="clinics">{t.tabClinics}</TabsTrigger>
+              <TabsTrigger value="investors">{t.tabInvestors}</TabsTrigger>
+            </TabsList>
+          </Reveal>
 
           <TabsContent value="clinics" className="mt-8">
             <div className="rounded-xl border border-border bg-card p-6 sm:p-8">
@@ -44,7 +47,7 @@ export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
               </p>
 
               {status === "success" ? (
-                <div className="mt-6 flex items-start gap-3 rounded-lg border border-clinical/30 bg-clinical/10 p-4">
+                <div className="animate-in fade-in slide-in-from-bottom-2 mt-6 flex items-start gap-3 rounded-lg border border-clinical/30 bg-clinical/10 p-4 duration-500">
                   <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-clinical" strokeWidth={1.75} />
                   <p className="text-sm leading-relaxed text-foreground">{t.clinics.success}</p>
                 </div>

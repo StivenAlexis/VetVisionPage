@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/section-heading";
 import { BeforeAfter } from "@/components/before-after";
 import { ReportCard } from "@/components/report-card";
+import { Reveal } from "@/components/reveal";
 import type { Dictionary } from "@/lib/i18n";
 
 export function HowItWorks({ dict }: { dict: Dictionary }) {
@@ -13,13 +14,13 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
       <Container>
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
-        <div className="mt-10">
+        <Reveal variant="scale-in" delay={120} className="mt-10">
           <BeforeAfter t={t.interactiveXray} />
-        </div>
+        </Reveal>
 
         <ol id="como-funciona" className="mt-14 grid scroll-mt-24 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {t.steps.map((step, i) => (
-            <li key={step.title} className="relative">
+            <Reveal key={step.title} as="li" delay={i * 90} className="relative">
               <span className="text-mono-nums text-sm font-semibold text-primary">
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -33,41 +34,43 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
                   className="absolute -right-4 top-1.5 hidden h-px w-8 bg-border lg:block"
                 />
               ) : null}
-            </li>
+            </Reveal>
           ))}
         </ol>
 
-        <div className="mt-16 text-center">
+        <Reveal className="mt-16 text-center">
           <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">
             {t.reportExample.eyebrow}
           </p>
           <h3 className="mt-2 text-lg font-semibold text-foreground">{t.reportExample.title}</h3>
-        </div>
-        <div className="mt-6">
+        </Reveal>
+        <Reveal variant="scale-in" delay={100} className="mt-6">
           <ReportCard t={t.reportExample} />
-        </div>
+        </Reveal>
 
         <h3 className="mt-16 text-sm font-semibold tracking-wide text-foreground uppercase">
           {t.modulesTitle}
         </h3>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
-          {t.modules.map((mod) => (
-            <div key={mod.name} className="rounded-lg border border-border bg-card p-6">
-              <span className="text-xs font-semibold tracking-wide text-clinical uppercase">
-                {mod.name}
-              </span>
-              <h4 className="mt-2 text-base font-semibold text-foreground">{mod.title}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {mod.description}
-              </p>
-            </div>
+          {t.modules.map((mod, i) => (
+            <Reveal key={mod.name} delay={i * 90}>
+              <div className="h-full rounded-lg border border-border bg-card p-6 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-clinical/40">
+                <span className="text-xs font-semibold tracking-wide text-clinical uppercase">
+                  {mod.name}
+                </span>
+                <h4 className="mt-2 text-base font-semibold text-foreground">{mod.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {mod.description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-10 flex items-start gap-3 rounded-lg border border-border bg-background/60 p-4">
+        <Reveal className="mt-10 flex items-start gap-3 rounded-lg border border-border bg-background/60 p-4">
           <ShieldAlert className="mt-0.5 size-4 shrink-0 text-muted-foreground" strokeWidth={1.75} />
           <p className="text-sm leading-relaxed text-muted-foreground">{t.disclaimer}</p>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

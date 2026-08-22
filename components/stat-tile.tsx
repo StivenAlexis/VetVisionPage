@@ -18,7 +18,7 @@ export function StatTile({
   return (
     <div
       className={cn(
-        "rounded-lg border border-border bg-card/60 p-5",
+        "rounded-lg border border-border bg-card/60 p-5 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/40",
         className
       )}
     >

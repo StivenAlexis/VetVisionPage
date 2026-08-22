@@ -1,18 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
+    <!-- Gradiente de fondo -->
     <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
       <stop offset="0%" stop-color="#1E293B" />
       <stop offset="100%" stop-color="#070D18" />
     </radialGradient>
+
+    <!-- Gradiente del brillo AI -->
     <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" />
       <stop offset="50%" stop-color="#00F0FF" />
       <stop offset="100%" stop-color="#0284C7" />
     </linearGradient>
+
+    <!-- Gradiente Verde Médico -->
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#34D399" />
       <stop offset="100%" stop-color="#059669" />
     </linearGradient>
+
+    <!-- Efecto de resplandor -->
     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="8" result="blur" />
       <feMerge>
@@ -22,36 +29,52 @@
     </filter>
   </defs>
 
+  <!-- Fondo Circular -->
   <circle cx="256" cy="256" r="256" fill="url(#bgGrad)" />
 
+  <!-- Anillos de escaneo radiográfico / IA -->
   <circle cx="256" cy="230" r="175" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-dasharray="8 6" />
   <circle cx="256" cy="230" r="145" fill="none" stroke="#0284C7" stroke-width="1.5" opacity="0.3" />
 
+  <!-- Mira de calibración / Ejes radiológicos (Cruz VHS) -->
   <line x1="256" y1="65" x2="256" y2="90" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" opacity="0.8" />
   <line x1="256" y1="370" x2="256" y2="395" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" opacity="0.8" />
   <line x1="90" y1="230" x2="115" y2="230" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" opacity="0.8" />
   <line x1="397" y1="230" x2="422" y2="230" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" opacity="0.8" />
 
+  <!-- Isotipo Central: Ojo Clínico + Silueta Canina/Felina y Red Neuronal -->
   <g filter="url(#glow)">
-    <path
-      d="M120 230 C 160 140, 352 140, 392 230 C 352 320, 160 320, 120 230 Z"
-      fill="none"
-      stroke="url(#cyanGlow)"
-      stroke-width="9"
-      stroke-linejoin="round"
-    />
+    <!-- Forma exterior: Lente / Apertura de Visión -->
+    <path d="M120 230 C 160 140, 352 140, 392 230 C 352 320, 160 320, 120 230 Z" 
+          fill="none" stroke="url(#cyanGlow)" stroke-width="9" stroke-linejoin="round" />
 
+    <!-- Silueta geométrica abstracta: Oreja/Perfil perro & gato entrelazados con el núcleo AI -->
+    <!-- Oreja canina izquierda -->
     <path d="M 210 185 L 235 130 L 256 175" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Oreja felina derecha -->
     <path d="M 256 175 L 277 130 L 302 185" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 
+    <!-- Ejes de Medición Cardíaca VHS (Intersección Central de Precisión) -->
     <line x1="256" y1="180" x2="256" y2="280" stroke="url(#accentGrad)" stroke-width="4" stroke-linecap="round" />
     <line x1="210" y1="230" x2="302" y2="230" stroke="url(#accentGrad)" stroke-width="4" stroke-linecap="round" />
 
+    <!-- Nodos neuronales (Keypoints anatómicos) -->
     <circle cx="256" cy="180" r="5.5" fill="#34D399" />
     <circle cx="256" cy="280" r="5.5" fill="#34D399" />
     <circle cx="210" cy="230" r="5.5" fill="#34D399" />
     <circle cx="302" cy="230" r="5.5" fill="#34D399" />
 
+    <!-- Centro de enfoque / Diodo central -->
     <circle cx="256" cy="230" r="8" fill="#FFFFFF" />
   </g>
+
+  <!-- Tipografía VetVision -->
+  <text x="256" y="435" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="34" letter-spacing="4" fill="#FFFFFF">
+    VET<tspan fill="#00F0FF">VISION</tspan>
+  </text>
+
+  <!-- Subtítulo / Badge Tech -->
+  <text x="256" y="465" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="13" letter-spacing="6" fill="#64748B">
+    AI DIAGNOSTICS
+  </text>
 </svg>

@@ -1,33 +1,71 @@
+import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 function LogoMark({ className }: { className?: string }) {
+  const uid = useId().replace(/:/g, "");
+  const id = (name: string) => `${name}-${uid}`;
+
   return (
     <svg
-      viewBox="0 0 32 32"
+      viewBox="0 0 512 512"
       className={cn("h-8 w-8 shrink-0", className)}
       aria-hidden="true"
     >
-      <rect width="32" height="32" rx="7" fill="#0B1120" />
-      <path
-        d="M4,9 L9,9 L11,5 L14,12.5 L16.5,9 L28,9"
-        fill="none"
-        stroke="#F8FAFC"
-        strokeWidth="1.15"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        opacity="0.9"
-      />
-      <path
-        d="M5,17 C9,10.5 23,10.5 27,17 C23,22.5 9,22.5 5,17 Z"
-        fill="none"
-        stroke="#22D3EE"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M16,13.5 L16,20.5" stroke="#34D399" strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M12.5,17 L19.5,17" stroke="#34D399" strokeWidth="1.3" strokeLinecap="round" />
-      <circle cx="16" cy="17" r="1.3" fill="#F8FAFC" />
+      <defs>
+        <radialGradient id={id("bgGrad")} cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+          <stop offset="0%" stopColor="#1E293B" />
+          <stop offset="100%" stopColor="#070D18" />
+        </radialGradient>
+        <linearGradient id={id("cyanGlow")} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38BDF8" />
+          <stop offset="50%" stopColor="#00F0FF" />
+          <stop offset="100%" stopColor="#0284C7" />
+        </linearGradient>
+        <linearGradient id={id("accentGrad")} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#34D399" />
+          <stop offset="100%" stopColor="#059669" />
+        </linearGradient>
+        <filter id={id("glow")} x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <circle cx="256" cy="256" r="256" fill={`url(#${id("bgGrad")})`} />
+
+      <circle cx="256" cy="230" r="175" fill="none" stroke="#1E293B" strokeWidth="2.5" strokeDasharray="8 6" />
+      <circle cx="256" cy="230" r="145" fill="none" stroke="#0284C7" strokeWidth="1.5" opacity="0.3" />
+
+      <line x1="256" y1="65" x2="256" y2="90" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      <line x1="256" y1="370" x2="256" y2="395" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      <line x1="90" y1="230" x2="115" y2="230" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      <line x1="397" y1="230" x2="422" y2="230" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+
+      <g filter={`url(#${id("glow")})`}>
+        <path
+          d="M120 230 C 160 140, 352 140, 392 230 C 352 320, 160 320, 120 230 Z"
+          fill="none"
+          stroke={`url(#${id("cyanGlow")})`}
+          strokeWidth="9"
+          strokeLinejoin="round"
+        />
+
+        <path d="M 210 185 L 235 130 L 256 175" fill="none" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 256 175 L 277 130 L 302 185" fill="none" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+
+        <line x1="256" y1="180" x2="256" y2="280" stroke={`url(#${id("accentGrad")})`} strokeWidth="4" strokeLinecap="round" />
+        <line x1="210" y1="230" x2="302" y2="230" stroke={`url(#${id("accentGrad")})`} strokeWidth="4" strokeLinecap="round" />
+
+        <circle cx="256" cy="180" r="5.5" fill="#34D399" />
+        <circle cx="256" cy="280" r="5.5" fill="#34D399" />
+        <circle cx="210" cy="230" r="5.5" fill="#34D399" />
+        <circle cx="302" cy="230" r="5.5" fill="#34D399" />
+
+        <circle cx="256" cy="230" r="8" fill="#FFFFFF" />
+      </g>
     </svg>
   );
 }
