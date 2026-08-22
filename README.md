@@ -1,0 +1,32 @@
+# VetVision AI — Landing page (v1)
+
+Landing page bilingüe (ES/EN) de VetVision AI, construida con Next.js (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui. Ver [prompt_landing_vetvision.md](./prompt_landing_vetvision.md) para el brief completo.
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Abrí [http://localhost:3000](http://localhost:3000) — redirige a `/es` (idioma por defecto). La versión en inglés vive en `/en`.
+
+## Estructura
+
+- `app/[lang]/` — layout raíz (fuentes, metadata por idioma, `<html lang>`) y la página única de la landing. `[lang]` es `es` o `en` (`generateStaticParams`); `/` redirige a `/es` vía `next.config.ts`.
+- `lib/i18n/` — diccionarios de copy ES/EN (`dictionaries/es.ts`, `dictionaries/en.ts`) tipados contra `types.ts`. Todo el texto de la landing sale de acá, no hay copy hardcodeado en los componentes.
+- `components/sections/` — una sección de la landing por archivo (hero, pains, how-it-works, market, comparison, partnership, roadmap, team, final-cta).
+- `components/ui/` — componentes base de shadcn/ui (`style: base-nova`, sobre `@base-ui/react`, no Radix).
+- `app/globals.css` — tokens de color de marca (paleta dark medtech de VetVision) sobre el sistema de theming de shadcn.
+
+## Pendiente antes de producción
+
+- **Placeholders de imagen**: la radiografía del hero es un mockup ilustrativo en SVG (no una radiografía real) — reemplazar por una imagen real del producto. Las fotos del equipo son placeholders (ícono genérico).
+- **Datos entre corchetes** (`[COMPLETAR: ...]`): nombres del equipo fundador, email de contacto, email de inversores, link de Calendly. Buscar `COMPLETAR` / `TO FILL IN` en `lib/i18n/dictionaries/` para encontrarlos todos.
+- **Formulario de beta**: el submit está mockeado (`console.log` + confirmación inline en `components/sections/final-cta.tsx`). Conectar a un endpoint real (Formspree, Resend, etc.) antes del lanzamiento.
+- **Componentes de 21st.dev**: el MCP de 21st.dev se agregó a la config del proyecto pero no llegó a estar disponible en esta sesión (los MCP agregados a mitad de sesión requieren reiniciar Claude Code para cargar sus herramientas). Los componentes de esta v1 están hechos a mano sobre shadcn/ui siguiendo sus mismas convenciones — después de reiniciar la sesión se puede usar 21st.dev para buscar/adaptar variantes alternativas.
+- **Dominio propio en Vercel**: el proyecto ya es deployable sin fricción (`npm run build` corre limpio). Al conectar el dominio en Vercel, actualizar `metadataBase` en `app/[lang]/layout.tsx` (hoy apunta a `https://vetvision.ai` como placeholder).
+
+## Disclaimer
+
+VetVision AI es una herramienta de apoyo diagnóstico. No reemplaza el criterio del médico veterinario — este disclaimer está siempre visible en el footer.
