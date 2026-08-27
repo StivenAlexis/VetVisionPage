@@ -1,7 +1,6 @@
 import { ShieldAlert } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/section-heading";
-import { BeforeAfter } from "@/components/before-after";
 import { ReportCard } from "@/components/report-card";
 import { Reveal } from "@/components/reveal";
 import type { Dictionary } from "@/lib/i18n";
@@ -13,10 +12,6 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
     <section id="producto" className="border-t border-border bg-card/30 py-20 sm:py-28">
       <Container>
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
-
-        <Reveal variant="scale-in" delay={120} className="mt-10">
-          <BeforeAfter t={t.interactiveXray} />
-        </Reveal>
 
         <ol id="como-funciona" className="mt-14 grid scroll-mt-24 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {t.steps.map((step, i) => (

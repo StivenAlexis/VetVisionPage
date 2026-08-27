@@ -115,7 +115,13 @@ export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
               </p>
 
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button size="lg" className="h-11 w-full sm:w-auto" render={<a href="#sumate" />}>
+                <Button
+                  size="lg"
+                  className="h-11 w-full sm:w-auto"
+                  render={
+                    <a href={`mailto:${t.investors.emailPlaceholder}?subject=${encodeURIComponent("Pitch deck VetVision AI")}`} />
+                  }
+                >
                   <Mail data-icon="inline-start" />
                   {t.investors.ctaPrimary}
                 </Button>

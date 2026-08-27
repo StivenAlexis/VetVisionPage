@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>VetVision AI — Radiografía interactiva</title>
+<style>
+:root{
+  --bg:#050b14; --panel:#08111d; --line:#203046; --text:#e8f2ff;
+  --muted:#7f93aa; --cyan:#00e5ff; --cyan2:#39bdf8; --green:#34d399;
+  --amber:#ffb347; --red:#ff5d73;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.demo-shell{max-width:1180px;margin:34px auto;padding:0 20px}
+.xray-card{position:relative;overflow:hidden;border:1px solid #213149;border-radius:18px;background:#07101b;box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 0 80px rgba(0,229,255,.025);aspect-ratio:16/9}
+.xray-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(3,12,21,.18));box-shadow:inset 0 0 48px rgba(0,0,0,.35)}
+.xray{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) brightness(.78) contrast(1.1)}
+.scan{position:absolute;left:7%;right:7%;top:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.7),transparent);box-shadow:0 0 14px var(--cyan);animation:scan 5.5s ease-in-out infinite;opacity:.55;z-index:2}@keyframes scan{50%{top:90%}}
+.topbar{position:absolute;left:24px;right:24px;top:20px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}.eyebrow{font:600 12px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:#9fb0c3}.eyebrow b{display:block;color:var(--green);margin-top:5px}.ai-badge{padding:9px 12px;border:1px solid #263850;border-radius:8px;background:rgba(4,12,22,.72);font:600 12px ui-monospace,monospace;color:#9fb0c3;backdrop-filter:blur(7px)}.ai-badge i{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);margin-right:7px}
+.marker-r{position:absolute;left:30px;top:21%;font:700 28px ui-monospace,monospace;color:#8594a7;z-index:3}.marker-r small{display:block;font-size:10px;font-weight:500;letter-spacing:.16em;margin-top:4px}
+.measure-top{position:absolute;top:11%;left:43%;width:34%;z-index:3;color:var(--green);font:600 12px ui-monospace,monospace;text-align:center}.measure-top .bar{height:12px;border-top:1px solid var(--green);border-left:1px solid var(--green);border-right:1px solid var(--green);margin-top:6px;position:relative}.measure-top .bar:after{content:"";position:absolute;left:52%;top:-5px;height:9px;border-left:1px solid var(--green)}
+.hotspot{position:absolute;z-index:5;border:1px dashed var(--cyan);background:rgba(0,229,255,.055);box-shadow:0 0 22px rgba(0,229,255,.08);cursor:pointer;transition:.2s}.hotspot:hover,.hotspot.active{background:rgba(0,229,255,.13);box-shadow:0 0 30px rgba(0,229,255,.23);transform:translateY(-1px)}
+.hotspot::before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hotspot span{position:absolute;left:0;top:-28px;white-space:nowrap;padding:4px 7px;border-radius:5px;background:#07111d;border:1px solid #17435a;color:var(--cyan);font:600 10px ui-monospace,monospace;letter-spacing:.04em}
+.heart{left:47.5%;top:31.5%;width:15.5%;height:31%}.heart::before{left:48%;top:48%}.trachea{left:28%;top:31%;width:21%;height:11%;transform:rotate(-8deg);border-width:1px 0 0 0;background:transparent}.trachea::before{left:13%;top:-4px}.trachea span{transform:rotate(8deg);left:-35px;top:-24px}
+.lung{left:35%;top:37%;width:20%;height:23%;border-color:rgba(255,179,71,.75);background:rgba(255,179,71,.035)}.lung::before{background:var(--amber);box-shadow:0 0 10px var(--amber);left:63%;top:52%}.lung span{color:var(--amber);border-color:#5b462a}
+.vhs{position:absolute;left:27px;bottom:23%;z-index:4;padding:9px 13px;border:1px solid #0bbbd1;border-radius:7px;background:rgba(3,13,23,.74);color:var(--cyan);font:700 16px ui-monospace,monospace;box-shadow:0 0 22px rgba(0,229,255,.09)}.vhs small{display:block;color:#8092a7;font-size:9px;margin-top:5px;font-weight:500;letter-spacing:.09em}
+.info{position:absolute;right:22px;bottom:22px;width:min(350px,36%);z-index:6;border:1px solid #24364e;border-radius:12px;background:rgba(5,13,24,.89);backdrop-filter:blur(10px);padding:14px;box-shadow:0 18px 45px rgba(0,0,0,.35)}.info-head{display:flex;justify-content:space-between;gap:12px}.info h3{font-size:14px;margin:0 0 4px}.confidence{font:700 11px ui-monospace,monospace;color:var(--green)}.info p{font-size:12px;line-height:1.5;color:#98a9bc;margin:8px 0 10px}.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;border:1px solid #35455a;font-size:10px;color:#b5c4d4}.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.findings{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.finding{border:1px solid #23354d;background:#07111d;color:#91a4b9;border-radius:999px;padding:7px 10px;font-size:10px;cursor:pointer}.finding.active{color:var(--cyan);border-color:#0d8fa3;background:rgba(0,229,255,.07)}
+.note{margin-top:11px;color:#5f748d;font-size:10px;line-height:1.4}.caption{text-align:center;color:#617995;font-size:12px;margin-top:14px}
+@media(max-width:800px){.xray-card{aspect-ratio:1/1.05}.xray{object-position:center}.info{left:14px;right:14px;bottom:14px;width:auto}.measure-top{display:none}.heart{left:45%;top:30%;width:20%;height:28%}.trachea{left:24%;top:30%;width:25%}.lung{left:32%;top:38%;width:21%;height:20%}.vhs{left:14px;bottom:auto;top:70%}.topbar{left:14px;right:14px}.marker-r{left:16px}.finding{padding:6px 8px}}
+</style>
+</head>
+<body>
+<div class="demo-shell">
+  <section class="xray-card" aria-label="Radiografía torácica canina analizada por IA">
+    <img class="xray" src="canine-xray.png" alt="Radiografía lateral canina ilustrativa" />
+    <div class="scan"></div>
+    <div class="topbar"><div class="eyebrow">RADIOGRAFÍA LATERAL<b>CANINA</b></div><div class="ai-badge"><i></i>IA · 1.4 s</div></div>
+    <div class="marker-r">R<small>LATERAL</small></div>
+    <div class="measure-top">L = 6.3v &nbsp;&nbsp;&nbsp;&nbsp; S = 5.6v<div class="bar"></div></div>
+
+    <button class="hotspot heart active" data-finding="cardio" aria-label="Cardiomegalia"><span>SILUETA CARDÍACA · 0.97</span></button>
+    <button class="hotspot trachea" data-finding="trachea" aria-label="Tráquea elevada"><span>TRÁQUEA ↑</span></button>
+    <button class="hotspot lung" data-finding="alveolar" aria-label="Patrón alveolar"><span>PATRÓN PULMONAR</span></button>
+
+    <div class="vhs">VHS 11.9<small>REF. DEMO ≤ 10.7</small></div>
+
+    <aside class="info" id="infoPanel">
+      <div class="info-head"><div><h3 id="findingTitle">Cardiomegalia probable</h3><span class="tag"><span class="dot"></span><span id="severity">Hallazgo prioritario</span></span></div><div class="confidence" id="confidence">97%</div></div>
+      <p id="findingText">La silueta cardíaca aparece aumentada. El VHS de demostración supera el valor de referencia configurado y la IA marca el eje largo y corto para revisión clínica.</p>
+      <div class="findings">
+        <button class="finding active" data-finding="cardio">VHS 11.9</button>
+        <button class="finding" data-finding="trachea">Tráquea elevada</button>
+        <button class="finding" data-finding="alveolar">Patrón pulmonar</button>
+      </div>
+      <div class="note">Demo visual de interfaz. El resultado debe ser validado por un médico veterinario.</div>
+    </aside>
+  </section>
+  <div class="caption">Imagen ilustrativa para el componente de producto VetVision AI.</div>
+</div>
+<script>
+const findings={
+ cardio:{title:'Cardiomegalia probable',severity:'Hallazgo prioritario',confidence:'97%',text:'La silueta cardíaca aparece aumentada. El VHS de demostración supera el valor de referencia configurado y la IA marca el eje largo y corto para revisión clínica.'},
+ trachea:{title:'Tráquea elevada',severity:'Hallazgo asociado',confidence:'91%',text:'La trayectoria de la tráquea presenta elevación respecto de su posición esperada. Puede acompañar un aumento de la silueta cardíaca y debe correlacionarse con la placa original.'},
+ alveolar:{title:'Patrón pulmonar sospechoso',severity:'Requiere revisión',confidence:'84%',text:'La IA resalta una región pulmonar con aumento de opacidad compatible con un patrón torácico a revisar. La clasificación definitiva corresponde al profesional veterinario.'}
+};
+function selectFinding(key){
+ const f=findings[key]; if(!f)return;
+ document.querySelectorAll('[data-finding]').forEach(el=>el.classList.toggle('active',el.dataset.finding===key));
+ document.getElementById('findingTitle').textContent=f.title;
+ document.getElementById('severity').textContent=f.severity;
+ document.getElementById('confidence').textContent=f.confidence;
+ document.getElementById('findingText').textContent=f.text;
+}
+document.querySelectorAll('[data-finding]').forEach(el=>el.addEventListener('click',()=>selectFinding(el.dataset.finding)));
+</script>
+</body>
+</html>

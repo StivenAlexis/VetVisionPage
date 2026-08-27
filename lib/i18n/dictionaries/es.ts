@@ -15,6 +15,41 @@ export const es: Dictionary = {
     ctaBeta: "Unite a la beta",
     skipToContent: "Saltar al contenido",
   },
+  radiograph: {
+    imageAlt: "Radiografía torácica lateral de un perro, analizada por VetVision AI",
+    findingsListTitle: "Hallazgos detectados",
+    regionLabel: "Región",
+    descriptionLabel: "Descripción",
+    reviewNote: "Hallazgo de apoyo diagnóstico — revisión veterinaria recomendada, no es un diagnóstico definitivo.",
+    disclaimer: "Imagen ilustrativa del producto VetVision AI — el resultado siempre lo valida un veterinario.",
+    severityLabels: {
+      info: "Informativo",
+      attention: "Requiere atención",
+      priority: "Hallazgo prioritario",
+    },
+    findings: [
+      {
+        id: "cardiomegaly",
+        name: "Cardiomegalia",
+        location: "Silueta cardíaca",
+        description:
+          "Aumento de la silueta cardíaca compatible con cardiomegalia: contacto esternal aumentado y borde caudal redondeado.",
+      },
+      {
+        id: "vhs-elevated",
+        name: "VHS elevado",
+        location: "Eje largo (L) + eje corto (S), transpuestos desde T4",
+        description:
+          "Índice VHS de 11.9, por encima de la referencia (≤ 10.7) — compatible con agrandamiento cardíaco.",
+      },
+      {
+        id: "alveolar-pattern",
+        name: "Patrón alveolar",
+        location: "Campo pulmonar craneal",
+        description: "Aumento de opacidad compatible con un patrón alveolar a revisar en la proyección lateral.",
+      },
+    ],
+  },
   hero: {
     badge: "Pre-seed · MVP en desarrollo · Alianza UNNE",
     headline: "Una segunda opinión experta",
@@ -28,10 +63,6 @@ export const es: Dictionary = {
       { value: "> 0.85", label: "AUC objetivo", detail: "en el módulo de cardiomegalia" },
       { value: "< 2 seg", label: "por imagen", detail: "tiempo de inferencia del modelo" },
     ],
-    visualCaption: "Radiografía torácica lateral de un canino, con overlay de detección de IA",
-    visualDisclaimer: "Imagen ilustrativa — se reemplaza por una radiografía real del producto",
-    zoomInLabel: "Click para ampliar el tórax",
-    zoomOutLabel: "Click para alejar",
   },
   pains: {
     eyebrow: "El problema",
@@ -66,35 +97,6 @@ export const es: Dictionary = {
     title: "De la radiografía al informe, en cuatro pasos",
     subtitle:
       "VetVision AI se apoya en transfer learning sobre arquitecturas ResNet-50 y DenseNet-121, entrenadas y validadas sobre casos reales.",
-    interactiveXray: {
-      rawCaption: "Placa cruda · ingreso",
-      analyzedCaption: "Análisis VetVision AI · < 2 s",
-      instruction: "Pasá el cursor sobre la placa analizada o sobre un hallazgo para ver el detalle clínico.",
-      aiBadge: "IA · 1.4 s",
-      vhsBadgeValue: "VHS 11.9",
-      vhsBadgeRef: "ref. ≤ 10.7",
-      onImageLabels: {
-        cardiac: "SILUETA CARDÍACA · 0.97",
-        trachea: "TRÁQUEA ↑",
-      },
-      findings: {
-        box: {
-          pill: "Silueta cardíaca · 0.97",
-          detail:
-            "Silueta cardíaca detectada (confianza 0.97): contacto esternal aumentado y borde caudal redondeado. La región se delimita y pasa al módulo VHS.",
-        },
-        vhs: {
-          pill: "VHS 11.9 · cardiomegalia",
-          detail:
-            "Índice VHS: eje largo L (base-ápice) + eje corto S (perpendicular en el punto más ancho), transpuestos sobre la columna desde T4 → VHS 11.9 · ref. ≤ 10.7 — compatible con cardiomegalia.",
-        },
-        traq: {
-          pill: "Tráquea elevada",
-          detail:
-            "Tráquea desplazada dorsalmente: menor ángulo con la columna vertebral, signo secundario de agrandamiento cardíaco.",
-        },
-      },
-    },
     steps: [
       {
         title: "Subir radiografía",
@@ -262,13 +264,10 @@ export const es: Dictionary = {
     title: "El equipo fundador",
     subtitle: "Estamos completando el equipo — estos son los roles clave del arranque.",
     roles: [
-      { role: "CEO / Product", name: "[COMPLETAR: nombre CEO]" },
-      { role: "CTO / Lead ML Engineer", name: "[COMPLETAR: nombre CTO]" },
-      { role: "Backend / Cloud Engineer", name: "[COMPLETAR: nombre Backend Engineer]" },
-      { role: "Veterinary Advisor", name: "[COMPLETAR: nombre Veterinary Advisor]" },
-      { role: "Business Developer", name: "[COMPLETAR: nombre Business Developer]" },
+      { role: "CEO / Product", name: "Stiven Monsalvo" },
+      { role: "CTO / Lead ML Engineer", name: "Lucas Quitana" },
     ],
-    hiringNote: "¿Te interesa sumarte al equipo fundador? Escribinos a [COMPLETAR: email de contacto].",
+    hiringNote: "¿Te interesa sumarte al equipo fundador? Escribinos a info@vetvision.com.ar.",
   },
   finalCta: {
     eyebrow: "Sumate",
@@ -298,7 +297,7 @@ export const es: Dictionary = {
         "Si representás un fondo, un ángel inversor o una incubadora como Endeavor, coordinemos una llamada o te enviamos el material completo.",
       ctaPrimary: "Solicitar pitch deck",
       ctaSecondary: "Agendar una llamada",
-      emailPlaceholder: "[COMPLETAR: email de inversores]",
+      emailPlaceholder: "inversiones@vetvision.com.ar",
       calendlyPlaceholder: "[COMPLETAR: link de Calendly]",
     },
   },
@@ -312,7 +311,7 @@ export const es: Dictionary = {
       { label: "Equipo", href: "#equipo" },
     ],
     contactHeading: "Contacto",
-    contactPlaceholder: "[COMPLETAR: email / redes de contacto]",
+    contactPlaceholder: "info@vetvision.com.ar",
     disclaimer: "Herramienta de apoyo diagnóstico. No reemplaza el criterio del médico veterinario.",
     copyright: "VetVision AI © 2026",
   },

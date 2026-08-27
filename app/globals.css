@@ -41,6 +41,8 @@
   --color-card: var(--card);
   --color-clinical: var(--clinical);
   --color-clinical-foreground: var(--clinical-foreground);
+  --color-severity-attention: var(--severity-attention);
+  --color-severity-priority: var(--severity-priority);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -73,6 +75,8 @@
   --accent-foreground: #67e8f9;
   --clinical: #34d399;
   --clinical-foreground: #03170f;
+  --severity-attention: #ffb347;
+  --severity-priority: #ff5d73;
   --destructive: #f87171;
   --border: #1e293b;
   --input: #1e293b;
@@ -110,6 +114,8 @@
   --accent-foreground: #67e8f9;
   --clinical: #34d399;
   --clinical-foreground: #03170f;
+  --severity-attention: #ffb347;
+  --severity-priority: #ff5d73;
   --destructive: #f87171;
   --border: #1e293b;
   --input: #1e293b;
@@ -160,12 +166,22 @@
     font-variant-numeric: tabular-nums;
   }
 
-  .animate-scan {
-    animation: scan 4.5s ease-in-out infinite;
-  }
-
   .animate-grid-drift {
     animation: grid-drift 50s linear infinite;
+  }
+
+  .animate-radiograph-scan {
+    animation: radiograph-scan 5.5s ease-in-out infinite;
+  }
+}
+
+@keyframes radiograph-scan {
+  0%,
+  100% {
+    top: 8%;
+  }
+  50% {
+    top: 90%;
   }
 }
 
@@ -175,24 +191,6 @@
   }
   to {
     background-position: 160px 160px;
-  }
-}
-
-@keyframes scan {
-  0%,
-  100% {
-    transform: translateY(2%);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(96%);
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
   }
 }
 

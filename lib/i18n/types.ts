@@ -31,10 +31,16 @@ export type Dictionary = {
     ctaInvestors: string;
     ctaBeta: string;
     stats: Stat[];
-    visualCaption: string;
-    visualDisclaimer: string;
-    zoomInLabel: string;
-    zoomOutLabel: string;
+  };
+  radiograph: {
+    imageAlt: string;
+    findingsListTitle: string;
+    regionLabel: string;
+    descriptionLabel: string;
+    reviewNote: string;
+    disclaimer: string;
+    severityLabels: { info: string; attention: string; priority: string };
+    findings: { id: string; name: string; location: string; description: string }[];
   };
   pains: {
     eyebrow: string;
@@ -46,20 +52,6 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     subtitle: string;
-    interactiveXray: {
-      rawCaption: string;
-      analyzedCaption: string;
-      instruction: string;
-      aiBadge: string;
-      vhsBadgeValue: string;
-      vhsBadgeRef: string;
-      onImageLabels: { cardiac: string; trachea: string };
-      findings: {
-        box: { pill: string; detail: string };
-        vhs: { pill: string; detail: string };
-        traq: { pill: string; detail: string };
-      };
-    };
     steps: { title: string; description: string }[];
     reportExample: {
       eyebrow: string;

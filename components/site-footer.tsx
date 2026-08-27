@@ -35,7 +35,12 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
             <h3 className="text-xs font-semibold tracking-wide text-foreground uppercase">
               {dict.footer.contactHeading}
             </h3>
-            <p className="mt-4 text-sm text-muted-foreground">{dict.footer.contactPlaceholder}</p>
+            <a
+              href={`mailto:${dict.footer.contactPlaceholder}`}
+              className="mt-4 block text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {dict.footer.contactPlaceholder}
+            </a>
           </div>
         </div>
 
