@@ -139,7 +139,6 @@ export type Dictionary = {
       ctaPrimary: string;
       ctaSecondary: string;
       emailPlaceholder: string;
-      calendlyPlaceholder: string;
     };
   };
   footer: {

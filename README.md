@@ -21,8 +21,8 @@ Abrí [http://localhost:3000](http://localhost:3000) — redirige a `/es` (idiom
 
 ## Pendiente antes de producción
 
-- **Placeholders de imagen**: la radiografía del hero es un mockup ilustrativo en SVG (no una radiografía real) — reemplazar por una imagen real del producto. Las fotos del equipo son placeholders (ícono genérico).
-- **Datos entre corchetes** (`[COMPLETAR: ...]`): nombres del equipo fundador, email de contacto, email de inversores, link de Calendly. Buscar `COMPLETAR` / `TO FILL IN` en `lib/i18n/dictionaries/` para encontrarlos todos.
+- **Placeholders de imagen**: la radiografía del visor (`public/canine-xray.png`) es una imagen ilustrativa generada, no una radiografía real del producto — reemplazar cuando haya una real (y recalibrar las zonas en `components/radiograph/findings-data.ts` si cambia el encuadre). Las fotos del equipo son placeholders (ícono genérico).
+- **Datos entre corchetes** (`[COMPLETAR: ...]`): ya no quedan pendientes — equipo, email de contacto, email de inversores y el link de agenda (Google Calendar) están completos.
 - **Formulario de beta**: el submit está mockeado (`console.log` + confirmación inline en `components/sections/final-cta.tsx`). Conectar a un endpoint real (Formspree, Resend, etc.) antes del lanzamiento.
 - **Componentes de 21st.dev**: el MCP de 21st.dev se agregó a la config del proyecto pero no llegó a estar disponible en esta sesión (los MCP agregados a mitad de sesión requieren reiniciar Claude Code para cargar sus herramientas). Los componentes de esta v1 están hechos a mano sobre shadcn/ui siguiendo sus mismas convenciones — después de reiniciar la sesión se puede usar 21st.dev para buscar/adaptar variantes alternativas.
 ## Deploy (Vercel + dominio propio)

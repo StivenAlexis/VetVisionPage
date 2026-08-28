@@ -22,7 +22,7 @@ export const DEMO_FINDINGS: FindingData[] = [
     confidence: 0.97,
     severity: "priority",
     onImageLabel: false,
-    region: { type: "bounding-box", x: 44, y: 29, width: 11, height: 33 },
+    region: { type: "bounding-box", x: 40, y: 27, width: 16, height: 36 },
   },
   {
     id: "vhs-elevated",

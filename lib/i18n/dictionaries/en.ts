@@ -293,9 +293,8 @@ export const en: Dictionary = {
       description:
         "If you represent a fund, an angel investor, or an incubator like Endeavor, let's schedule a call or send you the full materials.",
       ctaPrimary: "Request pitch deck",
-      ctaSecondary: "Schedule a call",
+      ctaSecondary: "Schedule an appointment",
       emailPlaceholder: "inversiones@vetvision.com.ar",
-      calendlyPlaceholder: "[TO FILL IN: Calendly link]",
     },
   },
   footer: {

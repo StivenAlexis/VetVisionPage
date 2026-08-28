@@ -296,9 +296,8 @@ export const es: Dictionary = {
       description:
         "Si representás un fondo, un ángel inversor o una incubadora como Endeavor, coordinemos una llamada o te enviamos el material completo.",
       ctaPrimary: "Solicitar pitch deck",
-      ctaSecondary: "Agendar una llamada",
+      ctaSecondary: "Agendar una cita",
       emailPlaceholder: "inversiones@vetvision.com.ar",
-      calendlyPlaceholder: "[COMPLETAR: link de Calendly]",
     },
   },
   footer: {

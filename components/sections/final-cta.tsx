@@ -119,7 +119,11 @@ export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
                   size="lg"
                   className="h-11 w-full sm:w-auto"
                   render={
-                    <a href={`mailto:${t.investors.emailPlaceholder}?subject=${encodeURIComponent("Pitch deck VetVision AI")}`} />
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${t.investors.emailPlaceholder}&su=${encodeURIComponent("Pitch deck VetVision AI")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
                   }
                 >
                   <Mail data-icon="inline-start" />
@@ -129,16 +133,20 @@ export function FinalCta({ t }: { t: Dictionary["finalCta"] }) {
                   size="lg"
                   variant="outline"
                   className="h-11 w-full sm:w-auto"
-                  render={<a href="#sumate" />}
+                  render={
+                    <a
+                      href="https://calendar.app.google/Z7w82QGrxE7bADxN8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
                 >
                   <CalendarClock data-icon="inline-start" />
                   {t.investors.ctaSecondary}
                 </Button>
               </div>
 
-              <p className="mt-5 text-xs text-muted-foreground/70">
-                {t.investors.emailPlaceholder} · {t.investors.calendlyPlaceholder}
-              </p>
+              <p className="mt-5 text-xs text-muted-foreground/70">{t.investors.emailPlaceholder}</p>
             </div>
           </TabsContent>
         </Tabs>
