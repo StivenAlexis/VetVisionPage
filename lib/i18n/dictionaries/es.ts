@@ -264,8 +264,9 @@ export const es: Dictionary = {
     title: "El equipo fundador",
     subtitle: "Estamos completando el equipo — estos son los roles clave del arranque.",
     roles: [
-      { role: "CEO / Product", name: "Stiven Monsalvo" },
-      { role: "CTO / Lead ML Engineer", name: "Lucas Quitana" },
+      { role: "CEO / Product", name: "Stiven Monsalvo", photo: "/team/stiven-monsalvo.jpg" },
+      { role: "CTO / Lead ML Engineer", name: "Lucas Quitana", photo: "/team/lucas-quitana.jpg" },
+      { role: "Mentor", name: "Mg. Sergio Lapertosa", photo: "/team/sergio-lapertosa.png" },
     ],
     hiringNote: "¿Te interesa sumarte al equipo fundador? Escribinos a info@vetvision.com.ar.",
   },

@@ -109,7 +109,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     subtitle: string;
-    roles: { role: string; name: string }[];
+    roles: { role: string; name: string; photo: string }[];
     hiringNote: string;
   };
   finalCta: {

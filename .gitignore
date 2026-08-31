@@ -44,3 +44,6 @@ next-env.d.ts
 AGENTS.md
 CLAUDE.md
 /Anthropic
+
+# raw source photos — the app uses the copies already checked into public/team/
+/photos
