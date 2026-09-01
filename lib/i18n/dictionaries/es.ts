@@ -268,7 +268,7 @@ export const es: Dictionary = {
       { role: "CTO / Lead ML Engineer", name: "Lucas Quitana", photo: "/team/lucas-quitana.jpg" },
       { role: "Mentor", name: "Mg. Sergio Lapertosa", photo: "/team/sergio-lapertosa.png" },
     ],
-    hiringNote: "¿Te interesa sumarte al equipo fundador? Escribinos a info@vetvision.com.ar.",
+    hiringNote: "¿Te interesa sumarte al equipo fundador? Escribinos a info@vetvision.com.ar",
   },
   finalCta: {
     eyebrow: "Sumate",
